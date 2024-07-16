@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+body{
+    margin: auto;
+    height: 100vh;
+
+}
+
+.display{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    height: 50%;
+}
+.screen{
+    border: 2px solid black;
+    width: 50%;
+    height: 10vh;
+}
+.textArea{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+#input{
+    width: 50%;
+    height: 10vh;
+}
+#shift{
+    width: 20%;
+    height: 5vh;
+}
+label{
+    font-size: 2rem;
+}

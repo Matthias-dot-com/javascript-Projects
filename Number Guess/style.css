@@ -1,0 +1,25 @@
+*{
+    margin: 0;
+    padding: 2px;
+    box-sizing: border-box;
+}
+
+body{
+    width: 50%;
+    margin: auto;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+
+.hidDis{
+    display: none;
+}
+
+.screen{
+    display: flex;
+    flex-direction: column;
+    
+}
