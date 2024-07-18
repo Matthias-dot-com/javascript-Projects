@@ -24,8 +24,13 @@ const weekdays = [
 const giveaway = document.querySelector(".giveaway");
 const giveawayFormat = document.querySelectorAll(".deadline-format h4");
 const deadline = document.querySelector(".deadline");
-
-const endDate = new Date(2024, 6, 19, 11, 59, 0);
+const tempDate = new Date();
+let tempYear = tempDate.getFullYear();
+let tempMonth = tempDate.getMonth();
+let tempDay = tempDate.getDate();
+console.log(tempDay,tempYear,tempMonth)
+// const endDate = new Date(2024, 6, 19, 11, 59, 0);
+const endDate = new Date(tempYear,tempMonth,tempDay+10,11,59,0)
 let Year = endDate.getFullYear();
 let month = months[endDate.getMonth()];
 let hour = endDate.getHours();
@@ -64,7 +69,7 @@ function getRemainingTime() {
       //  }return item
     }
   });
-  difference < 0 ? deadline.innerHTML = `<h4 class="expired">Sorry, this giveaway has expired</h4>`: difference
+  difference < 0 ? deadline.innerHTML = `<h4 class="expired" style="color:red">Sorry, this giveaway has expired</h4>`: difference
 }
 let countDown = setInterval(getRemainingTime, 1000);
 getRemainingTime();
