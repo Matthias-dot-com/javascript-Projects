@@ -19,10 +19,42 @@ const loremForm = document.querySelector(".lorem-form");
 
 loremForm.addEventListener("submit", function (e) {
   e.preventDefault();
-  let amount = input.value;
-  console.log(isNaN(""),amount)
-  if (amount==="" || amount > 9 || amount<0){
-    let displayParagraph = text[Math.floor(Math.random()*9)];
-    result.innerHTML = `<p class="result">${displayParagraph}</p>`;
+  let amount = parseInt(input.value);
+  if (isNaN(amount) || amount > 9 || amount < 0) {
+    let randomParagraph = text[Math.floor(Math.random() * 9)];
+
+    result.innerHTML = `<p class="result">${randomParagraph}</p>`;
+  } else {
+    let paragraphs = text.slice(0, amount);
+    result.innerHTML = "";
+    let contents = paragraphs
+      .map(function (paragraph) {
+        return `<p class='result'>${paragraph}</p>`;
+      })
+      .join("");
+    result.innerHTML = contents;
+    /* We can also use different Methods*/ 
+    // Method -1
+    /*
+    result.innerHTML = "";
+    paragraphs.forEach(function (paragraph) {
+      let p = document.createElement("p");
+      p.classList.add("result");
+      p.textContent = paragraph;
+      result.appendChild(p);
+    });*/
+
+    /* 
+    // Method -2
+    result.innerHTML = "";
+    for (let i = 1; i <= amount; i++) {
+      // let randomParagraph = text[Math.floor(Math.random() * 9)];
+
+      let p = document.createElement("p");
+      p.classList.add("result");
+
+      p.textContent = randomParagraph;
+      result.append(p);
+    }*/
   }
 });
