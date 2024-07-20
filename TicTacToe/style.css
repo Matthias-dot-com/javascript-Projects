@@ -32,6 +32,7 @@ body {
     justify-content: center;
     align-items: center;
     position: relative;
+    cursor: pointer;
 }
 
 .cell:first-child,
@@ -55,7 +56,11 @@ body {
 }
 
 .cell.x::before,
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover:not(.x):not(.o)::before,
+.board.x .cell:hover:not(.x):not(.o)::after,
+.board.o .cell:hover:not(.x):not(.o)::before,
+.board.o .cell:hover:not(.x):not(.o)::after {
     content: '';
     width: calc(var(--mark-size)*.15);
     height: var(--mark-size);
@@ -63,30 +68,83 @@ body {
     position: absolute;
 }
 
-.cell.x::before {
+.cell.x::before,
+.board.x .cell:hover:not(.x):not(.o)::before {
     transform: rotate(45deg);
 }
 
-.cell.x::after {
+.cell.x::after,
+.board.x .cell:hover:not(.x):not(.o)::after {
     transform: rotate(-45deg);
 }
 
-.cell.o::before {
+.cell.o::before,
+.cell.o::after,
+.board.o .cell:hover:not(.x):not(.o)::before,
+.board.o .cell:hover:not(.x):not(.o)::after {
     content: '';
     position: absolute;
     width: var(--mark-size);
     height: var(--mark-size);
-    border: 1px black solid;
     border-radius: 50%;
     background-color: black;
 }
 
-.cell.o::after {
-    content: '';
-    position: absolute;
+.cell.o::after,
+.board.o .cell:hover:not(.x):not(.o)::after {
     width: calc(var(--mark-size)*.7);
     height: calc(var(--mark-size)*.7);
     background-color: white;
+}
+
+.board.o .cell:hover:not(.x):not(.o)::before,
+.board.x .cell:hover:not(.x):not(.o)::before,
+.board.x .cell:hover:not(.x):not(.o)::after {
+    background-color: lightgray;
+}
+
+.board.o .cell:hover:not(.o):not(.x)::after {
+    background-color: white;
+}
+
+.cell.o,
+.cell.x {
+    cursor: not-allowed
+}
+
+.winning-message {
+    display: none;
+    position: fixed;
+    /* display: grid; */
+    place-content: center;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, .9);
+}
+
+.winning-text {
+    color: white;
+    font-size: 4rem;
+}
+
+.winning-message button {
+    padding: .25em .5em;
+    cursor: pointer;
+    background-color: white;
+    font-size: 2.5rem;
     border: 1px solid black;
-    border-radius: 50px;
+
+}
+
+.winning-message button:hover {
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+
+}
+
+.winning-message.show {
+    display: grid;
 }
