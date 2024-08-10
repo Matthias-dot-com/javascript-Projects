@@ -1,0 +1,111 @@
+a {
+    text-decoration: none;
+    color: black;
+}
+
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 80vh;
+    background-color: black;
+}
+
+/* Navigation Wrapper */
+.nav-wrapper {
+    position: relative;
+    padding: 10px;
+    background-color: rgb(61, 190, 230);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+/* Navigation List */
+.nav-list {
+    width: 100%;
+}
+
+.nav-list ul {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    list-style-type: none;
+}
+
+/* List Items */
+ul li {
+    font-size: 1.5em;
+}
+
+/* Dropdown Styles */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* Position the dropdown below the parent list item */
+    left: 0;
+    background-color: white;
+    border-radius: 8px;
+    padding: 10px;
+    min-width: 160px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    transition: all 0.3s ease;
+}
+
+.dropdown.visible {
+    display: block;
+}
+
+.dropdown::before {
+    content: '';
+    position: absolute;
+    margin-top: 10px;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    background: linear-gradient(45deg, rgba(255, 0, 150, 0.5), rgba(0, 204, 255, 0.5));
+    border-radius: 12px;
+    z-index: -1;
+    filter: blur(10px);
+
+}
+
+/* Dropdown Content */
+.dropdown a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dropdown a:hover {
+    background: linear-gradient(45deg, #ff0066, #ffcc00);
+    color: white;
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+}
+
+/* Dropdown Icon */
+.list-5 {
+    position: relative;
+    /* Now make only the parent of the dropdown relative */
+}
+
+.list-5 img {
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    transition: transform 0.3s ease;
+}
+
+/* .list-5:hover .dropdown {
+    display: block;
+} */
